@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LMS Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f0f2f5;
+    }
+    .card {
+      border-radius: 15px;
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">LMS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="courses.html">Courses</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="assignment.html">Assignments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="profile.html">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#" onclick="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Welcome Message -->
+  <div class="container mt-5">
+    <div class="text-center">
+      <h2>Welcome, <span id="username">Student</span> 👋</h2>
+      <p class="lead">Explore your courses and manage your learning here.</p>
+    </div>
+
+    <!-- Cards -->
+    <div class="row mt-4">
+      <div class="col-md-4 mb-4">
+        <div class="card text-white bg-success">
+          <div class="card-body">
+            <h5 class="card-title">My Courses</h5>
+            <p class="card-text">View enrolled courses and start learning.</p>
+            <a href="#" class="btn btn-light">Go to Courses</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card text-white bg-warning">
+          <div class="card-body">
+            <h5 class="card-title">Assignments</h5>
+            <p class="card-text">Submit your work and track progress.</p>
+            <a href="#" class="btn btn-light">View Assignments</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card text-white bg-info">
+          <div class="card-body">
+            <h5 class="card-title">Profile</h5>
+            <p class="card-text">Update your personal and academic info.</p>
+            <a href="#" class="btn btn-light">Edit Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logout Script -->
+  <script>
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <!-- Bootstrap Script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
