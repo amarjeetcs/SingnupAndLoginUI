@@ -2,44 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login Page - Amarjeet Academy</title>
+  <title>LMS Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
     body {
-      background-color: #f4f6f9;
+      background-color: #f0f2f5;
     }
 
-    .login-container {
-      max-width: 400px;
-      margin: 100px auto;
-      background: white;
-      padding: 30px;
+    .card {
       border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
     }
 
-    .toggle-btn {
-      cursor: pointer;
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
-    .google-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+    .form-control {
+      border-radius: 30px;
     }
 
-    .google-btn img {
-      width: 20px;
-      height: 20px;
+    .btn-light {
+      border-radius: 30px;
     }
 
     /* Navbar Styling */
     .navbar {
-      background-color: #0d6efd;
+      background-color: #0d6efd; /* Bootstrap blue */
     }
 
     .navbar-brand {
@@ -80,14 +74,22 @@
       color: #fff;
     }
 
+    /* Responsive search form */
+    @media (max-width: 991px) {
+      form[role="search"] {
+        width: 100% !important;
+        margin-top: 10px;
+      }
+    }
+
     /* Footer Styling */
     footer {
-      background-color: #1a1a2e;
+      background-color: #0d6efd;
       color: #ffffff;
     }
 
     footer h5 {
-      color: #ff4c60;
+      color: #ffc107;
       margin-bottom: 1rem;
     }
 
@@ -98,7 +100,7 @@
     }
 
     footer a:hover {
-      color: #ff4c60;
+      color: #ffc107;
       text-decoration: underline;
     }
 
@@ -124,7 +126,7 @@
 </head>
 <body>
 
-<!-- Header/Navbar -->
+<!-- Header -->
 <nav class="navbar navbar-expand-lg shadow-sm sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">LMS</a>
@@ -139,7 +141,7 @@
       </form>
 
       <ul class="navbar-nav ms-auto align-items-center mt-2 mt-lg-0">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
         <li class="nav-item"><a class="nav-link" href="assignment.html">Assignments</a></li>
         <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
@@ -151,58 +153,46 @@
     </div>
   </div>
 </nav>
+<!-- Header End -->
 
-<!-- Login Form -->
-<div class="login-container">
-  <h4 class="text-center mb-4">Log in to your account</h4>
-
-  <!-- Toggle between Email and Phone -->
-  <div class="text-center mb-3">
-    <span id="emailToggle" class="toggle-btn text-primary fw-bold me-3">Login with Email</span> |
-    <span id="phoneToggle" class="toggle-btn text-secondary fw-bold ms-3">Login with Phone</span>
+<!-- Dashboard Content -->
+<div class="container mt-5">
+  <div class="text-center">
+    <h2>Welcome, <span id="username">Student</span> 👋</h2>
+    <p class="lead">Explore your courses and manage your learning here.</p>
   </div>
 
-  <!-- Email Login Form -->
-  <form id="emailLoginForm">
-    <div class="mb-3">
-      <label>Email:</label>
-      <input type="email" class="form-control" placeholder="Enter email" required>
+  <!-- Dashboard Cards -->
+  <div class="row mt-4">
+    <div class="col-md-4 mb-4">
+      <div class="card text-white bg-success">
+        <div class="card-body">
+          <h5 class="card-title">My Courses</h5>
+          <p class="card-text">View enrolled courses and start learning.</p>
+          <a href="courses.html" class="btn btn-light">Go to Courses</a>
+        </div>
+      </div>
     </div>
-    <div class="mb-3">
-      <label>Password:</label>
-      <input type="password" class="form-control" placeholder="Enter password" required>
-    </div>
-    <button type="submit" class="btn btn-primary w-100">Login</button>
-  </form>
 
-  <!-- Phone Login Form (hidden by default) -->
-  <form id="phoneLoginForm" style="display: none;">
-    <div class="mb-3">
-      <label>Country Code:</label>
-      <input type="text" class="form-control" placeholder="+91" value="+91" required>
+    <div class="col-md-4 mb-4">
+      <div class="card text-white bg-warning">
+        <div class="card-body">
+          <h5 class="card-title">Assignments</h5>
+          <p class="card-text">Submit your work and track progress.</p>
+          <a href="assignment.html" class="btn btn-light">View Assignments</a>
+        </div>
+      </div>
     </div>
-    <div class="mb-3">
-      <label>Phone Number:</label>
-      <input type="tel" class="form-control" placeholder="Enter phone number" required>
+
+    <div class="col-md-4 mb-4">
+      <div class="card text-white bg-info">
+        <div class="card-body">
+          <h5 class="card-title">Profile</h5>
+          <p class="card-text">Update your personal and academic info.</p>
+          <a href="profile.html" class="btn btn-light">Edit Profile</a>
+        </div>
+      </div>
     </div>
-    <div class="mb-3">
-      <label>Password:</label>
-      <input type="password" class="form-control" placeholder="Enter password" required>
-    </div>
-    <button type="submit" class="btn btn-primary w-100">Login</button>
-  </form>
-
-  <div class="text-center my-3">or</div>
-
-  <!-- Google Login -->
-  <button class="btn btn-light border w-100 google-btn mb-3">
-    <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"> Login with Google account
-  </button>
-
-  <!-- Links -->
-  <div class="text-center">
-    <a href="#" class="d-block mb-2">Forgot your password?</a>
-    <span>Don't have an account? <a href="signup.html">Signup</a></span>
   </div>
 </div>
 
@@ -246,7 +236,7 @@
         <ul class="list-unstyled">
           <li><span class="footer-icon">📞</span><a href="tel:+91">+91 9576704073</a></li>
           <li><span class="footer-icon">📧</span><a href="#">lms.com</a></li>
-          <li><span class="footer-icon">🌐</span><a href="https://lms.com" target="_blank">www.letspro.in</a></li>
+          <li><span class="footer-icon">🌐</span><a href="#" target="_blank">www.letspro.in</a></li>
         </ul>
       </div>
 
@@ -258,31 +248,13 @@
   </div>
 </footer>
 
-<!-- JS -->
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  const emailToggle = document.getElementById('emailToggle');
-  const phoneToggle = document.getElementById('phoneToggle');
-  const emailForm = document.getElementById('emailLoginForm');
-  const phoneForm = document.getElementById('phoneLoginForm');
-
-  emailToggle.addEventListener('click', () => {
-    emailForm.style.display = 'block';
-    phoneForm.style.display = 'none';
-    emailToggle.classList.add('text-primary');
-    emailToggle.classList.remove('text-secondary');
-    phoneToggle.classList.add('text-secondary');
-    phoneToggle.classList.remove('text-primary');
-  });
-
-  phoneToggle.addEventListener('click', () => {
-    emailForm.style.display = 'none';
-    phoneForm.style.display = 'block';
-    phoneToggle.classList.add('text-primary');
-    phoneToggle.classList.remove('text-secondary');
-    emailToggle.classList.add('text-secondary');
-    emailToggle.classList.remove('text-primary');
-  });
+  function logout() {
+    alert("You have been logged out.");
+    window.location.href = "login.html";
+  }
 </script>
 
 </body>

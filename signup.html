@@ -2,93 +2,275 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Signup Page</title>
+  <title>Signup Page - Amarjeet Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <!-- Bootstrap 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
     body {
       background: #f0f2f5;
     }
+
     .form-box {
-      max-width: 400px;
+      max-width: 600px;
       margin: 60px auto;
       background: white;
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .toggle-tabs .btn {
+      width: 25%;
+      border-radius: 0;
+    }
+
+    .toggle-tabs .btn.active {
+      background-color: #198754;
+      color: white;
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: #1a1a2e;
+      color: #ffffff;
+    }
+
+    footer h5 {
+      color: #ff4c60;
+      margin-bottom: 1rem;
+    }
+
+    footer a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #ff4c60;
+      text-decoration: underline;
+    }
+
+    .footer-icon {
+      font-size: 1.1rem;
+      margin-right: 8px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #cccccc;
+    }
+
+    @media (max-width: 767px) {
+      footer .col-md-3 {
+        margin-bottom: 2rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="form-box">
-    <h2 class="text-center">Sign Up</h2>
-    <form id="signupForm">
-      <div class="mb-3">
-        <label for="signupName" class="form-label">Full Name</label>
-        <input type="text" class="form-control" id="signupName" placeholder="Enter full name" required>
-      </div>
-      <div class="mb-3">
-        <label for="signupEmail" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="signupEmail" placeholder="Enter email" required>
-      </div>
-      <div class="mb-3">
-        <label for="signupPassword" class="form-label">Password</label>
-        <input type="password" class="form-control" id="signupPassword" placeholder="Password" required>
-      </div>
-      <div class="mb-3">
-        <label for="signupConfirm" class="form-label">Confirm Password</label>
-        <input type="password" class="form-control" id="signupConfirm" placeholder="Confirm Password" required>
-      </div>
-      <button type="submit" class="btn btn-success w-100">Sign Up</button>
-      <p class="mt-3 text-center">Already have an account? <a href="login.html">Login</a></p>
-    </form>
+<!-- Header/Navbar -->
+<nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="background-color: #0d6efd;">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white fw-bold fs-4" href="#">LMS</a>
+    <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <form class="d-flex mx-auto" role="search" style="width: 30%;">
+        <input class="form-control me-2" type="search" placeholder="Search courses..." aria-label="Search">
+        <button class="btn btn-light" type="submit">Search</button>
+      </form>
+
+      <ul class="navbar-nav ms-auto align-items-center mt-2 mt-lg-0">
+        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="courses.html">Courses</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="assignment.html">Assignments</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="profile.html">Profile</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="career.html">Career</a></li>
+        <li class="nav-item ms-2"><a class="btn btn-outline-light" href="signup.html">Signup</a></li>
+        <li class="nav-item ms-2"><a class="btn btn-light" href="login.html">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Header End -->
+
+<!-- Signup Form Section -->
+<div class="form-box">
+  <h2 class="text-center mb-4">Sign Up</h2>
+
+  <div class="btn-group toggle-tabs mb-4 w-100" role="group">
+    <button type="button" class="btn btn-outline-success active" id="studentTab">Student</button>
+    <button type="button" class="btn btn-outline-success" id="instructorTab">Instructor</button>
+    <button type="button" class="btn btn-outline-success" id="organizationTab">Organization</button>
+    <button type="button" class="btn btn-outline-success" id="adminTab">Admin</button>
   </div>
 
-  <script>
+  <form id="signupForm">
+    <input type="hidden" id="accountType" value="Student">
+
+    <div class="mb-3">
+      <label class="form-label">Full Name</label>
+      <input type="text" class="form-control" id="signupName" placeholder="Enter full name" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" id="signupEmail" placeholder="Enter email" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Country</label>
+      <input type="text" class="form-control" id="signupCountry" placeholder="Enter country" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Phone (Optional)</label>
+      <input type="tel" class="form-control" id="signupPhone" placeholder="Enter phone number">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" id="signupPassword" placeholder="Password" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Retype Password</label>
+      <input type="password" class="form-control" id="signupConfirm" placeholder="Confirm Password" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Time Zone</label>
+      <select class="form-select" id="signupTimeZone" required>
+        <option value="">Select time zone</option>
+        <option value="IST">IST (India)</option>
+        <option value="EST">EST (US)</option>
+        <option value="PST">PST (US West)</option>
+        <option value="UTC">UTC</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Captcha</label>
+      <input type="text" class="form-control" placeholder="Enter captcha (demo)">
+    </div>
+
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox" id="termsCheckbox" required>
+      <label class="form-check-label" for="termsCheckbox">I agree with terms & rules</label>
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Sign Up</button>
+    <p class="mt-3 text-center">Already have an account? <a href="login.html">Login</a></p>
+  </form>
+</div>
+
+<!-- Footer -->
+<footer class="pt-5 pb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <h5>Amarjeet Academy</h5>
+        <p>
+          Kiss's learn and grow together at Let'sPro Academy.<br>
+          Live and hands-on classes tailored for your success.
+        </p>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <h5>Additional Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="/login">- Login</a></li>
+          <li><a href="/register">- Register</a></li>
+          <li><a href="/blog">- Blog</a></li>
+          <li><a href="/contact">- Contact us</a></li>
+          <li><a href="/certificate_validation">- Certificate validation</a></li>
+          <li><a href="/become-instructor">- Become instructor</a></li>
+          <li><a href="/pages/terms">- Terms & rules</a></li>
+          <li><a href="/pages/about">- About us</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <h5>Our Locations</h5>
+        <ul class="list-unstyled">
+          <li><a href="https://goo.gl/maps/xyz" target="_blank">- Mysore</a></li>
+          <li><a href="https://goo.gl/maps/xyz" target="_blank">- Bangalore</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-md-3">
+        <h5>Contact Us</h5>
+        <ul class="list-unstyled">
+          <li><span class="footer-icon">📞</span><a href="tel:+91">+91 9576704073</a></li>
+          <li class="mt-2"><span class="footer-icon">📧</span><a href="#">lms.com</a></li>
+          <li class="mt-2"><span class="footer-icon">🌐</span><a href="https://lms.com" target="_blank">www.letspro.in</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom mt-4">
+      &copy; 2025 Amarjeet Academy. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- Script -->
+<script>
+  const accountTypeInput = document.getElementById('accountType');
+  const tabs = {
+    Student: document.getElementById('studentTab'),
+    Instructor: document.getElementById('instructorTab'),
+    Organization: document.getElementById('organizationTab'),
+    Admin: document.getElementById('adminTab')
+  };
+
+  Object.entries(tabs).forEach(([type, btn]) => {
+    btn.addEventListener('click', () => {
+      accountTypeInput.value = type;
+      Object.values(tabs).forEach(tab => tab.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('signupName').placeholder =
+        type === 'Organization' ? "Enter organization name" :
+        type === 'Instructor' ? "Enter instructor name" :
+        type === 'Admin' ? "Enter admin full name" : "Enter full name";
+    });
+  });
+
   document.getElementById("signupForm").addEventListener("submit", function(e) {
     e.preventDefault();
-
-    const fullName = document.getElementById("signupName").value;
-    const email = document.getElementById("signupEmail").value;
     const password = document.getElementById("signupPassword").value;
-    const confirmPassword = document.getElementById("signupConfirm").value;
-
-    if (password !== confirmPassword) {
+    const confirm = document.getElementById("signupConfirm").value;
+    if (password !== confirm) {
       alert("Passwords do not match!");
       return;
     }
 
-    fetch("http://localhost:8082/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        fullName,
-        email,
-        password,
-        confirmPassword
-      })
-    })
-    .then(response => response.text())
-    .then(data => {
-      if (data.includes("already exists")) {
-        alert(data); 
-      } else if (data.includes("Signup successful")) {
-        alert(data);
-        window.location.href = "login.html";
-      } else {
-        alert(data);
-      }
-    })
-    .catch(error => {
-      alert("Error: " + error.message);
-      console.error("Signup error:", error);
-    });
+    const payload = {
+      accountType: document.getElementById("accountType").value,
+      fullName: document.getElementById("signupName").value,
+      email: document.getElementById("signupEmail").value,
+      country: document.getElementById("signupCountry").value,
+      phone: document.getElementById("signupPhone").value,
+      password: password,
+      timeZone: document.getElementById("signupTimeZone").value
+    };
+
+    console.log("Signup Payload", payload);
+    alert("Signup success for " + payload.accountType);
   });
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
