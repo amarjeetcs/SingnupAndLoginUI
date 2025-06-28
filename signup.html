@@ -4,15 +4,12 @@
   <meta charset="UTF-8">
   <title>Signup Page - Amarjeet Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Bootstrap 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
     body {
       background: #f0f2f5;
     }
-
     .form-box {
       max-width: 600px;
       margin: 60px auto;
@@ -21,44 +18,35 @@
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
-
     .toggle-tabs .btn {
       width: 25%;
       border-radius: 0;
     }
-
     .toggle-tabs .btn.active {
       background-color: #198754;
       color: white;
     }
-
-    /* Footer Styling */
     footer {
       background-color: #1a1a2e;
       color: #ffffff;
     }
-
     footer h5 {
       color: #ff4c60;
       margin-bottom: 1rem;
     }
-
     footer a {
       color: #ffffff;
       text-decoration: none;
       transition: color 0.3s;
     }
-
     footer a:hover {
       color: #ff4c60;
       text-decoration: underline;
     }
-
     .footer-icon {
       font-size: 1.1rem;
       margin-right: 8px;
     }
-
     .footer-bottom {
       border-top: 1px solid rgba(255, 255, 255, 0.2);
       padding-top: 1rem;
@@ -66,7 +54,6 @@
       font-size: 0.9rem;
       color: #cccccc;
     }
-
     @media (max-width: 767px) {
       footer .col-md-3 {
         margin-bottom: 2rem;
@@ -76,20 +63,18 @@
 </head>
 <body>
 
-<!-- Header/Navbar -->
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="background-color: #0d6efd;">
   <div class="container-fluid">
     <a class="navbar-brand text-white fw-bold fs-4" href="#">LMS</a>
     <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarNav">
-      <form class="d-flex mx-auto" role="search" style="width: 30%;">
+      <form class="d-flex mx-auto" style="width: 30%;">
         <input class="form-control me-2" type="search" placeholder="Search courses..." aria-label="Search">
         <button class="btn btn-light" type="submit">Search</button>
       </form>
-
       <ul class="navbar-nav ms-auto align-items-center mt-2 mt-lg-0">
         <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link text-white" href="courses.html">Courses</a></li>
@@ -103,9 +88,8 @@
     </div>
   </div>
 </nav>
-<!-- Header End -->
 
-<!-- Signup Form Section -->
+<!-- Signup Form -->
 <div class="form-box">
   <h2 class="text-center mb-4">Sign Up</h2>
 
@@ -145,11 +129,6 @@
     </div>
 
     <div class="mb-3">
-      <label class="form-label">Retype Password</label>
-      <input type="password" class="form-control" id="signupConfirm" placeholder="Confirm Password" required>
-    </div>
-
-    <div class="mb-3">
       <label class="form-label">Time Zone</label>
       <select class="form-select" id="signupTimeZone" required>
         <option value="">Select time zone</option>
@@ -158,11 +137,6 @@
         <option value="PST">PST (US West)</option>
         <option value="UTC">UTC</option>
       </select>
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">Captcha</label>
-      <input type="text" class="form-control" placeholder="Enter captcha (demo)">
     </div>
 
     <div class="form-check mb-3">
@@ -186,7 +160,6 @@
           Live and hands-on classes tailored for your success.
         </p>
       </div>
-
       <div class="col-6 col-md-3">
         <h5>Additional Links</h5>
         <ul class="list-unstyled">
@@ -200,15 +173,13 @@
           <li><a href="/pages/about">- About us</a></li>
         </ul>
       </div>
-
       <div class="col-6 col-md-3">
         <h5>Our Locations</h5>
         <ul class="list-unstyled">
-          <li><a href="https://goo.gl/maps/xyz" target="_blank">- Mysore</a></li>
-          <li><a href="https://goo.gl/maps/xyz" target="_blank">- Bangalore</a></li>
+          <li><a href="#" target="_blank">- Mysore</a></li>
+          <li><a href="#" target="_blank">- Bangalore</a></li>
         </ul>
       </div>
-
       <div class="col-12 col-md-3">
         <h5>Contact Us</h5>
         <ul class="list-unstyled">
@@ -218,7 +189,6 @@
         </ul>
       </div>
     </div>
-
     <div class="footer-bottom mt-4">
       &copy; 2025 Amarjeet Academy. All rights reserved.
     </div>
@@ -249,20 +219,13 @@
 
   document.getElementById("signupForm").addEventListener("submit", function(e) {
     e.preventDefault();
-    const password = document.getElementById("signupPassword").value;
-    const confirm = document.getElementById("signupConfirm").value;
-    if (password !== confirm) {
-      alert("Passwords do not match!");
-      return;
-    }
-
     const payload = {
       accountType: document.getElementById("accountType").value,
       fullName: document.getElementById("signupName").value,
       email: document.getElementById("signupEmail").value,
       country: document.getElementById("signupCountry").value,
       phone: document.getElementById("signupPhone").value,
-      password: password,
+      password: document.getElementById("signupPassword").value,
       timeZone: document.getElementById("signupTimeZone").value
     };
 
