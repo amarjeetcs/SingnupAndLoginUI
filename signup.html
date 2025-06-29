@@ -196,6 +196,68 @@
 </footer>
 
 <!-- Script -->
+<!-- <script>
+  const accountTypeInput = document.getElementById('accountType');
+  const tabs = {
+    Student: document.getElementById('studentTab'),
+    Instructor: document.getElementById('instructorTab'),
+    Organization: document.getElementById('organizationTab'),
+    Admin: document.getElementById('adminTab')
+  };
+
+  Object.entries(tabs).forEach(([type, btn]) => {
+    btn.addEventListener('click', () => {
+      accountTypeInput.value = type;
+      Object.values(tabs).forEach(tab => tab.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('signupName').placeholder =
+        type === 'Organization' ? "Enter organization name" :
+        type === 'Instructor' ? "Enter instructor name" :
+        type === 'Admin' ? "Enter admin full name" : "Enter full name";
+    });
+  });
+
+  document.getElementById("signupForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const payload = {
+      accountType: document.getElementById("accountType").value,
+      fullName: document.getElementById("signupName").value,
+      email: document.getElementById("signupEmail").value,
+      country: document.getElementById("signupCountry").value,
+      phone: document.getElementById("signupPhone").value,
+      password: document.getElementById("signupPassword").value,
+      timeZone: document.getElementById("signupTimeZone").value
+    };
+
+    // Only submit to student signup if accountType is Student
+    if (payload.accountType === "Student") {
+      fetch("http://localhost:8082/api/student/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Signup failed");
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log("Success:", data);
+        alert("Signup success for Student!");
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("Signup failed. Please try again.");
+      });
+    } else {
+      alert("Currently only Student signup is supported.");
+    }
+  });
+</script> -->
 <script>
   const accountTypeInput = document.getElementById('accountType');
   const tabs = {
@@ -219,20 +281,48 @@
 
   document.getElementById("signupForm").addEventListener("submit", function(e) {
     e.preventDefault();
+
     const payload = {
-      accountType: document.getElementById("accountType").value,
       fullName: document.getElementById("signupName").value,
       email: document.getElementById("signupEmail").value,
       country: document.getElementById("signupCountry").value,
       phone: document.getElementById("signupPhone").value,
       password: document.getElementById("signupPassword").value,
-      timeZone: document.getElementById("signupTimeZone").value
+      timeZone: document.getElementById("signupTimeZone").value,
+      accountType: document.getElementById("accountType").value
     };
 
-    console.log("Signup Payload", payload);
-    alert("Signup success for " + payload.accountType);
+    const accountTypeLower = payload.accountType.toLowerCase(); // student, instructor, etc.
+    const url = `http://localhost:8082/api/${accountTypeLower}/signup`;
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(response => {
+      if (!response.ok) {
+        return response.json().then(data => {
+          throw new Error(data.message || "Signup failed");
+        });
+      }
+      return response.json();
+    })
+    .then(data => {
+      alert(`${payload.accountType} signup successful!`);
+      document.getElementById("signupForm").reset();
+    })
+    .catch(error => {
+      alert(`${payload.accountType} signup failed: ${error.message}`);
+      console.error("Error:", error);
+    });
   });
 </script>
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
