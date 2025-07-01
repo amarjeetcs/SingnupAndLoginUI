@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Signup Page - Amarjeet Academy</title>
+  <title>Signup Page - LMS Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -154,9 +154,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-3">
-        <h5>Amarjeet Academy</h5>
+        <h5>LMS Academy</h5>
         <p>
-          Kiss's learn and grow together at Let'sPro Academy.<br>
+          learn and grow together at LMS Academy.<br>
           Live and hands-on classes tailored for your success.
         </p>
       </div>
@@ -185,79 +185,16 @@
         <ul class="list-unstyled">
           <li><span class="footer-icon">📞</span><a href="tel:+91">+91 9576704073</a></li>
           <li class="mt-2"><span class="footer-icon">📧</span><a href="#">lms.com</a></li>
-          <li class="mt-2"><span class="footer-icon">🌐</span><a href="https://lms.com" target="_blank">www.letspro.in</a></li>
+          <li class="mt-2"><span class="footer-icon">🌐</span><a href="https://lms.com" target="_blank">www.lms.in</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom mt-4">
-      &copy; 2025 Amarjeet Academy. All rights reserved.
+      &copy; 2025 LMS Academy. All rights reserved.
     </div>
   </div>
 </footer>
 
-<!-- Script -->
-<!-- <script>
-  const accountTypeInput = document.getElementById('accountType');
-  const tabs = {
-    Student: document.getElementById('studentTab'),
-    Instructor: document.getElementById('instructorTab'),
-    Organization: document.getElementById('organizationTab'),
-    Admin: document.getElementById('adminTab')
-  };
-
-  Object.entries(tabs).forEach(([type, btn]) => {
-    btn.addEventListener('click', () => {
-      accountTypeInput.value = type;
-      Object.values(tabs).forEach(tab => tab.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('signupName').placeholder =
-        type === 'Organization' ? "Enter organization name" :
-        type === 'Instructor' ? "Enter instructor name" :
-        type === 'Admin' ? "Enter admin full name" : "Enter full name";
-    });
-  });
-
-  document.getElementById("signupForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const payload = {
-      accountType: document.getElementById("accountType").value,
-      fullName: document.getElementById("signupName").value,
-      email: document.getElementById("signupEmail").value,
-      country: document.getElementById("signupCountry").value,
-      phone: document.getElementById("signupPhone").value,
-      password: document.getElementById("signupPassword").value,
-      timeZone: document.getElementById("signupTimeZone").value
-    };
-
-    // Only submit to student signup if accountType is Student
-    if (payload.accountType === "Student") {
-      fetch("http://localhost:8082/api/student/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Signup failed");
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log("Success:", data);
-        alert("Signup success for Student!");
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        alert("Signup failed. Please try again.");
-      });
-    } else {
-      alert("Currently only Student signup is supported.");
-    }
-  });
-</script> -->
 <script>
   const accountTypeInput = document.getElementById('accountType');
   const tabs = {
