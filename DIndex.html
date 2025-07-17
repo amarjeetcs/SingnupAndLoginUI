@@ -2,27 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Courses - Amarjeet Academy</title>
+  <title>LMS Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
     body {
-      background-color: #f4f6f9;
+      background-color: #f0f2f5;
     }
 
-    .course-card {
-      border-radius: 10px;
+    .card {
+      border-radius: 15px;
       transition: 0.3s;
     }
 
-    .course-card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .form-control {
+      border-radius: 30px;
+    }
+
+    .btn-light {
+      border-radius: 30px;
     }
 
     /* Navbar Styling */
     .navbar {
-      background-color: #0d6efd;
+      background-color: #0d6efd; /* Bootstrap blue */
     }
 
     .navbar-brand {
@@ -63,14 +74,22 @@
       color: #fff;
     }
 
+    /* Responsive search form */
+    @media (max-width: 991px) {
+      form[role="search"] {
+        width: 100% !important;
+        margin-top: 10px;
+      }
+    }
+
     /* Footer Styling */
     footer {
-      background-color: #1a1a2e;
+      background-color: #0d6efd;
       color: #ffffff;
     }
 
     footer h5 {
-      color: #ff4c60;
+      color: #ffc107;
       margin-bottom: 1rem;
     }
 
@@ -81,7 +100,7 @@
     }
 
     footer a:hover {
-      color: #ff4c60;
+      color: #ffc107;
       text-decoration: underline;
     }
 
@@ -107,7 +126,7 @@
 </head>
 <body>
 
-<!-- Navbar -->
+<!-- Header -->
 <nav class="navbar navbar-expand-lg shadow-sm sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">LMS</a>
@@ -122,8 +141,8 @@
       </form>
 
       <ul class="navbar-nav ms-auto align-items-center mt-2 mt-lg-0">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link active" href="courses.html">Courses</a></li>
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
         <li class="nav-item"><a class="nav-link" href="assignment.html">Assignments</a></li>
         <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
@@ -134,12 +153,46 @@
     </div>
   </div>
 </nav>
+<!-- Header End -->
 
-<!-- Course Section -->
+<!-- Dashboard Content -->
 <div class="container mt-5">
-  <h2 class="text-center mb-4">My Courses</h2>
-  <div class="row" id="courseContainer">
-    <!-- Dynamic course cards go here -->
+  <div class="text-center">
+    <h2>Welcome, <span id="username">Student</span> 👋</h2>
+    <p class="lead">Explore your courses and manage your learning here.</p>
+  </div>
+
+  <!-- Dashboard Cards -->
+  <div class="row mt-4">
+    <div class="col-md-4 mb-4">
+      <div class="card text-white bg-success">
+        <div class="card-body">
+          <h5 class="card-title">My Courses</h5>
+          <p class="card-text">View enrolled courses and start learning.</p>
+          <a href="courses.html" class="btn btn-light">Go to Courses</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card text-white bg-warning">
+        <div class="card-body">
+          <h5 class="card-title">Assignments</h5>
+          <p class="card-text">Submit your work and track progress.</p>
+          <a href="assignment.html" class="btn btn-light">View Assignments</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card text-white bg-info">
+        <div class="card-body">
+          <h5 class="card-title">Profile</h5>
+          <p class="card-text">Update your personal and academic info.</p>
+          <a href="profile.html" class="btn btn-light">Edit Profile</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -183,7 +236,7 @@
         <ul class="list-unstyled">
           <li><span class="footer-icon">📞</span><a href="tel:+91">+91 9576704073</a></li>
           <li><span class="footer-icon">📧</span><a href="#">lms.com</a></li>
-          <li><span class="footer-icon">🌐</span><a href="https://lms.com" target="_blank">www.letspro.in</a></li>
+          <li><span class="footer-icon">🌐</span><a href="#" target="_blank">www.letspro.in</a></li>
         </ul>
       </div>
 
@@ -196,77 +249,13 @@
 </footer>
 
 <!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  const courses = [
-    {
-      title: "Java Full Stack Development",
-      instructor: "Amarjeet Kumar Singh",
-      duration: "3 Months",
-      description: "Learn Java, Spring Boot, Angular, SQL, REST APIs and more to build full-stack applications."
-    },
-    {
-      title: "Python Programming",
-      instructor: "Neha Verma",
-      duration: "2.5 Months",
-      description: "Explore Python from basics to advanced including web development and automation."
-    },
-    {
-      title: "C Programming",
-      instructor: "Ravi Kumar",
-      duration: "2 Months",
-      description: "Master C programming for logic building and competitive coding."
-    },
-    {
-      title: "C++ Programming",
-      instructor: "Sunita Singh",
-      duration: "2.5 Months",
-      description: "Dive into Object-Oriented Programming using C++ with STL and DSA."
-    },
-    {
-      title: "Angular Development",
-      instructor: "Deepak Tiwari",
-      duration: "1.5 Months",
-      description: "Learn Angular, TypeScript, RxJS and build responsive frontend apps."
-    },
-    {
-      title: "Node.js Backend",
-      instructor: "Anjali Yadav",
-      duration: "2 Months",
-      description: "Build backend services using Node.js, Express and MongoDB."
-    }
-  ];
-
-  const container = document.getElementById("courseContainer");
-
-  courses.forEach(course => {
-    container.innerHTML += `
-      <div class="col-md-4 mb-4">
-        <div class="card course-card">
-          <div class="card-body">
-            <h5 class="card-title">${course.title}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Instructor: ${course.instructor}</h6>
-            <p class="card-text">${course.description}</p>
-            <p><strong>Duration:</strong> ${course.duration}</p>
-            <div class="d-flex justify-content-between">
-              <a href="#" class="btn btn-primary">Start Course</a>
-              <button class="btn btn-outline-secondary" onclick="editCourse('${course.title}')">Edit</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-  });
-
-  function editCourse(courseTitle) {
-    alert("Edit requested for course: " + courseTitle);
-  }
-
   function logout() {
-    alert("Logged out.");
+    alert("You have been logged out.");
     window.location.href = "login.html";
   }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
